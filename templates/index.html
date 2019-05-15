@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>index</title>
+</head>
+<body>
+<div>
+    <ul>
+        <h4>所有文章</h4>
+        <br/>
+        <br/>
+        <br/>
+        {% for article in AllArticle %}
+            <li>第{{ article.article_id }}篇文章</li>
+            <li>文章标题：{{ article.title }}</li>
+            <li>文章内容：{{ article.body|safe}}</li>
+            <li>文章所属地区：{{ article.position_id }}</li>
+            <li>文章是否属于被推荐文章：{{ article.recommend_id }}</li>
+            <li>文章创建时间{{ article.created_time }}</li>
+            <li>文章作者：{{ article.user }}</li>
+            <li>文章浏览数{{ article.views }}</li>
+            <li>文章url：{{ article.url }}</li>
+            <hr/>
+        {% endfor %}
+    </ul>
+</div>
+</body>
+</html>
