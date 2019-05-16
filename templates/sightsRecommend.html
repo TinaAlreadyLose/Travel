@@ -1,173 +1,247 @@
-<!doctype html>
-<html lang="en">
-<head>
-<!-- Required meta tags -->
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-<!-- Bootstrap CSS -->
-<link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-<title>Hello, world!</title>
-</head>
-<body>
-	<br>
+{% include 'head.html' %}
+<br>
 <div>
-	
-  <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
-    <div class="carousel-inner">
-      <div class="carousel-item active"> <img style="height: 400px;width: 100%;" class="d-block w-100" src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1558599793&di=49866fa1b05f9b3b18cfb590c6165546&imgtype=jpg&er=1&src=http%3A%2F%2Fn.sinaimg.cn%2Fent%2Ftransform%2F20170422%2FaMcg-fyeqcac1353984.jpg" alt="First slide"> </div>
-      <div class="carousel-item"> <img style="height: 400px;width: 100%;" class="d-block w-100" src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1558005138148&di=596fe49119471a0420fb05663f4d8fab&imgtype=0&src=http%3A%2F%2Fs9.sinaimg.cn%2Fmiddle%2F882b0724gb530f107db88%26690" alt="Second slide"> </div>
-      <div class="carousel-item"> <img style="height: 400px;width: 100%;" class="d-block w-100" src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1558005166460&di=3768a099f89b17c6bbd35c10751ad8d1&imgtype=0&src=http%3A%2F%2Fi2.hexunimg.cn%2F2013-02-23%2F151389120.jpg" alt="Third slide"> </div>
-    </div>
-    <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev"> <span class="carousel-control-prev-icon" aria-hidden="true"></span> <span class="sr-only">Previous</span> </a> <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next"> <span class="carousel-control-next-icon" aria-hidden="true"></span> <span class="sr-only">Next</span> </a> </div>
-  <div class="container" style="text-align: center">
-    <h2>热门景点</h2>
-    <p>让你的生活，不止拍拍照就离开</p>
-  </div>
-  <div  class="container">
-    <div class="card-deck">
-      <div class="card"> 
-		  
-		  <img  class="card-img-top" src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1558003978407&di=b80f4e2b0bb8b41ba5ad9da164b8a888&imgtype=0&src=http%3A%2F%2Fpic.uzzf.com%2Fup%2F2018-1%2F15167591018270994.jpg">
-		
-        <div class="card-body">
-          <h5 class="card-title">Card title</h5>
-          <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-        </div>
-        <div class="card-footer"> <small class="text-muted">Last updated 3 mins ago</small> </div>
-      </div>
-      <div class="card">
-		  <img  class="card-img-top" src="https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=888998026,431532717&fm=15&gp=0.jpg" alt="Card image cap">
-        <div class="card-body">
-          <h5 class="card-title">Card title</h5>
-          <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
-        </div>
-        <div class="card-footer"> <small class="text-muted">Last updated 3 mins ago</small> </div>
-      </div>
-      <div class="card"> <img  class="card-img-top" src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1558598869&di=dbbed9c3f7bfa9e91e71655e359a5b06&imgtype=jpg&er=1&src=http%3A%2F%2Fpic.uzzf.com%2Fup%2F2018-1%2F201801240959068446089.png" alt="Card image cap">
-		
-        <div class="card-body">
-          <h5 class="card-title">Card title</h5>
-          <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
-        </div>
-        <div class="card-footer"> <small class="text-muted">Last updated 3 mins ago</small> </div>
-      </div>
-    </div>
-	  <div class="card-deck">
-      <div class="card"> <img  class="card-img-top" src="https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=64994943,2677950297&fm=26&gp=0.jpg">
-        <div class="card-body">
-          <h5 class="card-title">Card title</h5>
-          <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-        </div>
-        <div class="card-footer"> <small class="text-muted">Last updated 3 mins ago</small> </div>
-      </div>
-      <div class="card"> <img  class="card-img-top" src="https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=138245573,1310741140&fm=26&gp=0.jpg" alt="Card image cap">
-        <div class="card-body">
-          <h5 class="card-title">Card title</h5>
-          <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
-        </div>
-        <div class="card-footer"> <small class="text-muted">Last updated 3 mins ago</small> </div>
-      </div>
-      <div class="card"> <img  class="card-img-top" src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1558599037&di=1782899fab4ebed8a85fad18d0430293&imgtype=jpg&er=1&src=http%3A%2F%2Fi-1.52miji.com%2F2018%2F5%2F10%2FKDYwMHgp%2Ff83b4468-176e-4277-ab37-de3756a98279.jpg" alt="Card image cap">
-        <div class="card-body">
-          <h5 class="card-title">Card title</h5>
-          <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
-        </div>
-        <div class="card-footer"> <small class="text-muted">Last updated 3 mins ago</small> </div>
-      </div>
-    </div>
-  </div>
 
-<hr>
-	<div class="jumbotron jumbotron-fluid" style="background-image: url(https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1558004499834&di=30532c2a8098cf5e975f13a5cab467b9&imgtype=0&src=http%3A%2F%2Fpic1.win4000.com%2Fwallpaper%2Fc%2F5733e2b3a88a8.jpg); background-repeat: no-repeat;background-size: cover;
+    {% block Banner %}
+        <div class="alert alert-light" role="alert">
+            <div class="alert alert-light" role="alert">
+                <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+                    <ol class="carousel-indicators">
+                        <li data-target="#carouselExampleIndicators" data-slide-to="0"
+                            class="active"></li>
+                        <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+                        <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+                    </ol>
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <img class="d-block w-100"
+                                 src="../media/ArticleImg/2019/05/14/Abstract-1.jpg"
+                                 alt="First slide"
+                                 height="500">
+                            <div class="carousel-caption d-none d-md-block">
+                                <h4>img-first</h4>
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <img class="d-block w-100"
+                                 src="../media/ArticleImg/2019/05/14/Abstract-2.jpg"
+                                 alt="Second slide"
+                                 height="500">
+                            <div class="carousel-caption d-none d-md-block">
+                                <h4>img-second</h4>
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <img class="d-block w-100"
+                                 src="../media/ArticleImg/2019/05/14/Abstract-3.jpg"
+                                 alt="Third slide"
+                                 height="500">
+                            <div class="carousel-caption d-none d-md-block">
+                                <h4>img-third</h4>
+                            </div>
+                        </div>
+                    </div>
+                    <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button"
+                       data-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="sr-only">Previous</span>
+                    </a>
+                    <a class="carousel-control-next" href="#carouselExampleIndicators" role="button"
+                       data-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="sr-only">Next</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    {% endblock %}
+    {% block HotSights %}
+        <div class="container" style="text-align: center">
+            <h2>热门景点</h2>
+            <p>让你的生活，不止拍拍照就离开</p>
+        </div>
+
+        <div class="container">
+            <div class="card-deck">
+                <div class="card">
+
+                    <img class="card-img-top"
+                         src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1558003978407&di=b80f4e2b0bb8b41ba5ad9da164b8a888&imgtype=0&src=http%3A%2F%2Fpic.uzzf.com%2Fup%2F2018-1%2F15167591018270994.jpg">
+
+                    <div class="card-body">
+                        <h5 class="card-title">Card title</h5>
+                        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to
+                            additional content. This content is a little bit longer.</p>
+                    </div>
+                    <div class="card-footer">
+                        <small class="text-muted">Last updated 3 mins ago</small>
+                    </div>
+                </div>
+                <div class="card">
+                    <img class="card-img-top"
+                         src="https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=888998026,431532717&fm=15&gp=0.jpg"
+                         alt="Card image cap">
+                    <div class="card-body">
+                        <h5 class="card-title">Card title</h5>
+                        <p class="card-text">This card has supporting text below as a natural lead-in to additional
+                            content.</p>
+                    </div>
+                    <div class="card-footer">
+                        <small class="text-muted">Last updated 3 mins ago</small>
+                    </div>
+                </div>
+                <div class="card"><img class="card-img-top"
+                                       src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1558598869&di=dbbed9c3f7bfa9e91e71655e359a5b06&imgtype=jpg&er=1&src=http%3A%2F%2Fpic.uzzf.com%2Fup%2F2018-1%2F201801240959068446089.png"
+                                       alt="Card image cap">
+
+                    <div class="card-body">
+                        <h5 class="card-title">Card title</h5>
+                        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to
+                            additional content. This card has even longer content than the first to show that equal
+                            height
+                            action.</p>
+                    </div>
+                    <div class="card-footer">
+                        <small class="text-muted">Last updated 3 mins ago</small>
+                    </div>
+                </div>
+            </div>
+            <div class="card-deck">
+                <div class="card"><img class="card-img-top"
+                                       src="https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=64994943,2677950297&fm=26&gp=0.jpg">
+                    <div class="card-body">
+                        <h5 class="card-title">Card title</h5>
+                        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to
+                            additional content. This content is a little bit longer.</p>
+                    </div>
+                    <div class="card-footer">
+                        <small class="text-muted">Last updated 3 mins ago</small>
+                    </div>
+                </div>
+                <div class="card"><img class="card-img-top"
+                                       src="https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=138245573,1310741140&fm=26&gp=0.jpg"
+                                       alt="Card image cap">
+                    <div class="card-body">
+                        <h5 class="card-title">Card title</h5>
+                        <p class="card-text">This card has supporting text below as a natural lead-in to additional
+                            content.</p>
+                    </div>
+                    <div class="card-footer">
+                        <small class="text-muted">Last updated 3 mins ago</small>
+                    </div>
+                </div>
+                <div class="card"><img class="card-img-top"
+                                       src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1558599037&di=1782899fab4ebed8a85fad18d0430293&imgtype=jpg&er=1&src=http%3A%2F%2Fi-1.52miji.com%2F2018%2F5%2F10%2FKDYwMHgp%2Ff83b4468-176e-4277-ab37-de3756a98279.jpg"
+                                       alt="Card image cap">
+                    <div class="card-body">
+                        <h5 class="card-title">Card title</h5>
+                        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to
+                            additional content. This card has even longer content than the first to show that equal
+                            height
+                            action.</p>
+                    </div>
+                    <div class="card-footer">
+                        <small class="text-muted">Last updated 3 mins ago</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <hr>
+    {% endblock %}
+    {% block TravelWays %}
+        <div class="jumbotron jumbotron-fluid" style="background-image: url(https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1558004499834&di=30532c2a8098cf5e975f13a5cab467b9&imgtype=0&src=http%3A%2F%2Fpic1.win4000.com%2Fwallpaper%2Fc%2F5733e2b3a88a8.jpg); background-repeat: no-repeat;background-size: cover;
   -webkit-background-size: cover;
   -o-background-size: cover;">
-	<div class="container" style="text-align: center">
-    <h2>旅游攻略</h2>
-    <p>让你的生活，不止拍拍照就离开</p>
-  </div>
-	<div  class="container">
-<div class="card-columns">
-  <div class="card"> <img class="card-img-top" src="https://ss1.baidu.com/-4o3dSag_xI4khGko9WTAnF6hhy/image/h%3D300/sign=0734f78af2039245beb5e70fb795a4a8/b8014a90f603738d6d8d0d65bd1bb051f919ecb6.jpg"
-                             alt="Card image cap">
-    <div class="card-body">
-      <h5 class="card-title">第一个</h5>
-      <p class="card-text">This is a longer card with supporting text below as a
-        natural
-        lead-in
-        to
-        additional
-        content. This content is a little bit longer.</p>
-    </div>
-  </div>
-  <div class="card"> <img class="card-img-top" src="https://ss0.baidu.com/7Po3dSag_xI4khGko9WTAnF6hhy/image/h%3D300/sign=9dfebc5223738bd4db21b431918a876c/f7246b600c338744acb2ecf35c0fd9f9d62aa0ce.jpg"
-                             alt="Card image cap">
-    <div class="card-body">
-      <h5 class="card-title">第一个</h5>
-      <p class="card-text">This is a longer card with supporting text below as a
-        natural
-        lead-in
-        to
-        additional
-        content. This content is a little bit longer.</p>
-    </div>
-  </div>
-  <div class="card"> <img class="card-img-top" src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1558004585198&di=6bf35de52eb864353bc826d45b5b9251&imgtype=0&src=http%3A%2F%2Fe.hiphotos.baidu.com%2Fimage%2Fpic%2Fitem%2F4610b912c8fcc3cef70d70409845d688d53f20f7.jpg"
-                             alt="Card image cap">
-    <div class="card-body">
-      <h5 class="card-title">第一个</h5>
-      <p class="card-text">This is a longer card with supporting text below as a
-        natural
-        lead-in
-        to
-        additional
-        content. This content is a little bit longer.</p>
-    </div>
-  </div>
-  <div class="card"> <img class="card-img-top" src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1558004704904&di=d4731911f81ef30ca44534b8f07799b4&imgtype=0&src=http%3A%2F%2Ftaiwanbike.tw%2Fatt%2Fablum%2F02000024%2Fb_14000167.jpg"
-                             alt="Card image cap">
-    <div class="card-body">
-      <h5 class="card-title">第一个</h5>
-      <p class="card-text">This is a longer card with supporting text below as a
-        natural
-        lead-in
-        to
-        additional
-        content. This content is a little bit longer.</p>
-    </div>
-  </div>
-  <div class="card"> <img class="card-img-top" src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1558004725967&di=37ad9f6dc6949f429d4770c6aa886919&imgtype=0&src=http%3A%2F%2Fwww.lovehhy.net%2Flib%2Fimg%2F10325469%2F1411298_10325469.jpg"
-                             alt="Card image cap">
-    <div class="card-body">
-      <h5 class="card-title">第一个</h5>
-      <p class="card-text">This is a longer card with supporting text below as a
-        natural
-        lead-in
-        to
-        additional
-        content. This content is a little bit longer.</p>
-    </div>
-  </div>
-	<div class="card"> <img class="card-img-top" src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1558004789709&di=896bdc2914ade004c1aa6e5a82fe1353&imgtype=0&src=http%3A%2F%2Fs13.sinaimg.cn%2Fmiddle%2F9c8f27a2gb820eb69c96c%26690"
-                             alt="Card image cap">
-    <div class="card-body">
-      <h5 class="card-title">第一个</h5>
-      <p class="card-text">This is a longer card with supporting text below as a
-        natural
-        lead-in
-        to
-        additional
-        content. This content is a little bit longer.</p>
-    </div>
-  </div>
+            <div class="container" style="text-align: center">
+                <h2>旅游攻略</h2>
+                <p>让你的生活，不止拍拍照就离开</p>
+            </div>
+            <div class="container">
+                <div class="card-columns">
+                    <div class="card"><img class="card-img-top"
+                                           src="https://ss1.baidu.com/-4o3dSag_xI4khGko9WTAnF6hhy/image/h%3D300/sign=0734f78af2039245beb5e70fb795a4a8/b8014a90f603738d6d8d0d65bd1bb051f919ecb6.jpg"
+                                           alt="Card image cap">
+                        <div class="card-body">
+                            <h5 class="card-title">第一个</h5>
+                            <p class="card-text">This is a longer card with supporting text below as a
+                                natural
+                                lead-in
+                                to
+                                additional
+                                content. This content is a little bit longer.</p>
+                        </div>
+                    </div>
+                    <div class="card"><img class="card-img-top"
+                                           src="https://ss0.baidu.com/7Po3dSag_xI4khGko9WTAnF6hhy/image/h%3D300/sign=9dfebc5223738bd4db21b431918a876c/f7246b600c338744acb2ecf35c0fd9f9d62aa0ce.jpg"
+                                           alt="Card image cap">
+                        <div class="card-body">
+                            <h5 class="card-title">第一个</h5>
+                            <p class="card-text">This is a longer card with supporting text below as a
+                                natural
+                                lead-in
+                                to
+                                additional
+                                content. This content is a little bit longer.</p>
+                        </div>
+                    </div>
+                    <div class="card"><img class="card-img-top"
+                                           src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1558004585198&di=6bf35de52eb864353bc826d45b5b9251&imgtype=0&src=http%3A%2F%2Fe.hiphotos.baidu.com%2Fimage%2Fpic%2Fitem%2F4610b912c8fcc3cef70d70409845d688d53f20f7.jpg"
+                                           alt="Card image cap">
+                        <div class="card-body">
+                            <h5 class="card-title">第一个</h5>
+                            <p class="card-text">This is a longer card with supporting text below as a
+                                natural
+                                lead-in
+                                to
+                                additional
+                                content. This content is a little bit longer.</p>
+                        </div>
+                    </div>
+                    <div class="card"><img class="card-img-top"
+                                           src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1558004704904&di=d4731911f81ef30ca44534b8f07799b4&imgtype=0&src=http%3A%2F%2Ftaiwanbike.tw%2Fatt%2Fablum%2F02000024%2Fb_14000167.jpg"
+                                           alt="Card image cap">
+                        <div class="card-body">
+                            <h5 class="card-title">第一个</h5>
+                            <p class="card-text">This is a longer card with supporting text below as a
+                                natural
+                                lead-in
+                                to
+                                additional
+                                content. This content is a little bit longer.</p>
+                        </div>
+                    </div>
+                    <div class="card"><img class="card-img-top"
+                                           src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1558004725967&di=37ad9f6dc6949f429d4770c6aa886919&imgtype=0&src=http%3A%2F%2Fwww.lovehhy.net%2Flib%2Fimg%2F10325469%2F1411298_10325469.jpg"
+                                           alt="Card image cap">
+                        <div class="card-body">
+                            <h5 class="card-title">第一个</h5>
+                            <p class="card-text">This is a longer card with supporting text below as a
+                                natural
+                                lead-in
+                                to
+                                additional
+                                content. This content is a little bit longer.</p>
+                        </div>
+                    </div>
+                    <div class="card"><img class="card-img-top"
+                                           src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1558004789709&di=896bdc2914ade004c1aa6e5a82fe1353&imgtype=0&src=http%3A%2F%2Fs13.sinaimg.cn%2Fmiddle%2F9c8f27a2gb820eb69c96c%26690"
+                                           alt="Card image cap">
+                        <div class="card-body">
+                            <h5 class="card-title">第一个</h5>
+                            <p class="card-text">This is a longer card with supporting text below as a
+                                natural
+                                lead-in
+                                to
+                                additional
+                                content. This content is a little bit longer.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% endblock %}
 </div>
-</div>
-		</div>
-	</div>
-<!-- Optional JavaScript --> 
-<!-- jQuery first, then Popper.js, then Bootstrap JS --> 
-<script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script> 
-<script src="https://cdn.bootcss.com/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script> 
-<script src="https://cdn.bootcss.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-</body>
-</html>
+<!-- Optional JavaScript -->
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+{% include 'foot.html' %}

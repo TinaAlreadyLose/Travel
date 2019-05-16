@@ -2,9 +2,22 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>test</title>
 </head>
 <body>
+<form action="/search-post" method="post">
+    {% csrf_token %}
+    <input type="text" name="address1">
+    <input type="text" name="address2">
+    <input type="submit" value="submit">
+</form>
 
+<p>
+    {#    {{ address1_lat }}#}
+    {#    {{ address1_lng }}#}
+    {#    {{ address2_lat }}#}
+    {#    {{ address2_lng }}#}
+    {{ d }}
+</p>
 </body>
 </html>

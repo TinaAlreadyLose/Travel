@@ -18,11 +18,19 @@ from django.views.static import serve
 from django.urls import path, include
 from django.conf.urls import url
 from travel import views
-from myTravel.settings import MEDIA_ROOT
+from myTravel.settings import MEDIA_ROOT, STATICFILES_DIRS
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('ueditor/', include('DjangoUeditor.urls')),  # 添加DjangoUeditor的URL
     path('', views.selectAll),
-    path('index.php', views.selectAll),
+    path('index.php', views.BootStrap),
+    path('detail.php', views.detail),
+    path('sightsrecommand.php', views.sightsRecommand),
+    path('news.php', views.news),
     url(r'^media/(?P<path>.*)', serve, {"document_root": MEDIA_ROOT}),
+    url(r'^static/(?P<path>.*)', serve, {"document_root": STATICFILES_DIRS}),
+    url(r'^search-post', views.search_post),
+    url(r'^test.php',views.test),
+    url(r'^demo.php', views.flow),
 ]

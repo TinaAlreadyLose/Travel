@@ -28,6 +28,7 @@ class Article(models.Model):
     detail_area = models.CharField(max_length=100)
     lon = models.FloatField()
     lat = models.FloatField()
+    summary = models.CharField(max_length=40)
 
     class Meta:
         managed = False
@@ -181,9 +182,15 @@ class Banner(models.Model):
 
 class Flow(models.Model):
     article_id = models.IntegerField()
-    flow = models.BigIntegerField()
     name = models.CharField(max_length=40)
     max = models.BigIntegerField()
+    time1_flow = models.BigIntegerField()
+    time2_flow = models.BigIntegerField()
+    time3_flow = models.BigIntegerField()
+    time4_flow = models.BigIntegerField()
+    time5_flow = models.BigIntegerField()
+    time_6flow = models.BigIntegerField()
+    flow_img = models.ImageField(upload_to='FlowImg')
 
     class Meta:
         managed = False
@@ -248,7 +255,11 @@ class HotelPrice(models.Model):
 class News(models.Model):
     id = models.ForeignKey('NewsImg', models.DO_NOTHING, db_column='id', primary_key=True)
     news_title = models.CharField(max_length=40)
-    news_body = models.TextField()
+    news_body = UEditorField('内容', width=800, height=500,
+                             toolbars="full", imagePath="UeditorImg/", filePath="UeditorFile/",
+                             upload_settings={"imageMaxSize": 9204000},
+                             settings={}, command=None, blank=True
+                             )
 
     class Meta:
         managed = False

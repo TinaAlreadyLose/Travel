@@ -6,10 +6,10 @@ from .models import Article, ArticleImg, Banner, Flow, Hotel, HotelImg, HotelPri
 # Register your models here.
 
 class ArticleAdmin(admin.ModelAdmin):
-    list_display = ('article_id', 'recommend_id', 'position_id', 'title', 'user', 'created_time')
+    list_display = ('article_id', 'recommend_id', 'position_id', 'title', 'summary', 'user', 'created_time')
     list_per_page = 20
     ordering = ('-article_id',)
-    list_editable = ['position_id', 'recommend_id', 'title', 'user']
+    list_editable = ['position_id', 'recommend_id', 'title', 'user', 'summary']
 
 
 admin.site.register(ArticleImg)

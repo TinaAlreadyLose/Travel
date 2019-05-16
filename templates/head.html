@@ -1,10 +1,134 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    {% load  static %}
+    <link href="{% static 'CSS/center.css' %}" rel='stylesheet' type='text/css'>
+    <title>Hello, world!</title>
 </head>
 <body>
+<nav class="navbar navbar-expand-lg navbar-light fixed-top" style="background-color: #e3f2fd;">
+    <a class="navbar-brand" href="#">Navbar</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+                <a class="nav-link" href="#">首页 <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">全国热闻</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">景点推荐</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">流量统计</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">酒店预定</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">关于我们</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">联系我们</a>
+            </li>
+        </ul>
+        <form class="form-inline my-2 my-lg-0">
+            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button> &nbsp;&nbsp;
+            <button class="btn btn-outline-secondary float-right" type="submit">登陆</button> &nbsp;&nbsp;
+            <button class="btn btn-outline-secondary float-right" type="submit">注册</button>
+        </form>
+    </div>
+</nav>
+{#<nav class="navbar fixed-top navbar-light bg-light"> {# 固定到顶部 #}
 
-</body>
-</html>
+{#<nav class="navbar navbar-light " style="background-color: #e3f2fd;">{#  顶部导航栏 #}
+{#    <div class="alert alert-primary" role="alert">#}
+{#        <nav class="navbar navbar-light bg-light">#}
+{#             <img id="head_img" src="../media/ArticleImg/2019/05/14/Abstract-4.jpg">#}
+{#            <button type="button" class="btn btn-outline-primary">首页</button>&nbsp;&nbsp;&nbsp;#}
+{#            <button type="button" class="btn btn-outline-primary">全国热闻</button>&nbsp;&nbsp;&nbsp;#}
+{#            <button type="button" class="btn btn-outline-primary">景点推荐</button>&nbsp;&nbsp;&nbsp;#}
+{#            <button type="button" class="btn btn-outline-primary">流量统计</button>&nbsp;&nbsp;&nbsp;#}
+{#            <button type="button" class="btn btn-outline-primary">预定</button>&nbsp;&nbsp;&nbsp;#}
+{#            <button type="button" class="btn btn-outline-primary">关于我们</button>&nbsp;&nbsp;&nbsp;#}
+{#            <button type="button" class="btn btn-outline-primary">联系我们</button>&nbsp;&nbsp;&nbsp;#}
+{##}
+{#            <form class="form-inline" id="right">#}
+{#                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">#}
+{#                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>#}
+{#            </form>#}
+{#        </nav>#}
+{#        <ul class="nav nav-pills">#}
+{#            <li class="nav-item">#}
+{#                <a class="nav-link active" href="#">Active</a>#}
+{#            </li>#}
+{#            <li class="nav-item">#}
+{#                <a class="nav-link" href="#">Link</a>#}
+{#            </li>#}
+{#            <li class="nav-item ">#}
+{#                <a class="nav-link " href="#">Link</a>#}
+{#            </li>#}
+{#            <li class="nav-item">#}
+{#                <a class="nav-link" href="#">Link</a>#}
+{#            </li>#}
+{#            <li class="nav-item">#}
+{#                <a class="nav-link" href="#">Link</a>#}
+{#            </li>#}
+{#            <li class="nav-item">#}
+{#                <a class="nav-link disabled" href="#">Disabled</a>#}
+{#            </li>#}
+{#            <li class="nav-item">#}
+{#                <div class="dropdown">#}
+{#                    <button class="btn btn-secondary dropdown-toggle " type="button" id="dropdownMenuButton"#}
+{#                            data-toggle="dropdown"#}
+{#                            aria-haspopup="true" aria-expanded="false">#}
+{#                        下拉选项#}
+{#                    </button>#}
+{#                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">#}
+{#                        <a class="dropdown-item" href="#">第一个选项</a>#}
+{#                        <a class="dropdown-item" href="#">另一个选项</a>#}
+{#                        <a class="dropdown-item" href="#">其他选项</a>#}
+{#                    </div>#}
+{#                </div>#}
+{#            </li>#}
+{#        </ul>#}
+{#    </div>#}
+{#下拉按钮#}
+{#    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02"#}
+{#            aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">#}
+{#        <span class="navbar-toggler-icon"></span>#}
+{#    </button>#}
+{##}
+{#    <div class="collapse navbar-collapse" id="navbarTogglerDemo02">#}
+{#下拉选项的link#}
+{#        <ul class="navbar-nav mr-auto mt-2 mt-lg-0">#}
+{#            <li class="nav-item active">#}
+{#                <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>#}
+{#            </li>#}
+{#            <li class="nav-item">#}
+{#                <a class="nav-link" href="#">Link</a>#}
+{#            </li>#}
+{#            <li class="nav-item">#}
+{#                <a class="nav-link disabled" href="#">Disabled</a>#}
+{#            </li>#}
+{#        </ul>#}
+{#搜索#}
+{#        <form class="form-inline my-2 my-lg-0">#}
+{#            <input class="form-control mr-sm-2" type="search" placeholder="Search">#}
+{#            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>#}
+{#        </form>#}
+{#    </div>#}
+{#</nav>#}
+{#</nav>#}
