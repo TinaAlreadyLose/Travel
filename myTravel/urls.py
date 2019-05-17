@@ -23,14 +23,15 @@ from myTravel.settings import MEDIA_ROOT, STATICFILES_DIRS
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('ueditor/', include('DjangoUeditor.urls')),  # 添加DjangoUeditor的URL
-    path('', views.selectAll),
-    path('index.php', views.BootStrap),
-    path('detail.php', views.detail),
-    path('sightsrecommand.php', views.sightsRecommand),
-    path('news.php', views.news),
+    url('', views.selectAll),
+    url(r'^index.php', views.BootStrap),
+    url(r'^detail.php/', views.detail),
+    url(r'^sightsrecommand.php/', views.sightsRecommand),
+    url(r'^news.php/', views.news),
     url(r'^media/(?P<path>.*)', serve, {"document_root": MEDIA_ROOT}),
     url(r'^static/(?P<path>.*)', serve, {"document_root": STATICFILES_DIRS}),
-    url(r'^search-post', views.search_post),
-    url(r'^test.php',views.test),
-    url(r'^demo.php', views.flow),
+    # -------庆------- #
+    url(r'^search-post/', views.search_post),
+    url(r'^test.php/', views.test),
+    url(r'^demo.php/', views.flow),
 ]
