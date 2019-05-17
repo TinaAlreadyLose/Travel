@@ -1,5 +1,6 @@
 from django.shortcuts import render, HttpResponse
-from .models import Article, ArticleImg, Banner, Flow, Hotel, HotelImg, HotelPrice, News, NewsImg, Position, Type
+from .models import Article, ArticleImg, Banner, Flow, Hotel, HotelImg, HotelPrice, News, NewsImg, Position, Type, \
+    PositionCity, PositionArea
 import requests
 
 from django.shortcuts import render
@@ -34,7 +35,8 @@ def selectAll(request):
     AllNewsImg = NewsImg.objects.all()
     AllPosition = Position.objects.all()
     AllType = Type.objects.all()
-
+    AllPositionCity = PositionCity.objects.all()
+    AllPositionArea = PositionArea.objects.all()
     context = {
         'AllArticle': AllArticle,
         'AllArticleImg': AllArticleImg,
@@ -47,6 +49,8 @@ def selectAll(request):
         'AllNewsImg': AllNewsImg,
         'AllPosition': AllPosition,
         'AllType': AllType,
+        'AllPositionCity': AllPositionCity,
+        'AllPositionArea': AllPositionArea,
     }
     return render(request, 'index.html', context)
 
@@ -69,6 +73,14 @@ def sightsRecommand(request):
 # 新闻路由请求
 def news(request):
     return render(request, 'news.html')
+
+
+def aboutUs(request):
+    return render(request, 'aboutUs.html')
+
+
+def contactUs(request):
+    return render(request, 'contactUs.html')
 
 
 ###^----------------庆------------^###

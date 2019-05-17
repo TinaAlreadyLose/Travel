@@ -1,0 +1,86 @@
+{% include 'head.html' %}
+<br>
+<div>
+    {% block Photo %}
+        <div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <img class="d-block w-100" style="height: 300px;"
+                         src="http://s15.sinaimg.cn/large/001ShO21gy6MgPUe5cOde" alt="First slide">
+                </div>
+                <div class="carousel-item">
+                    <img class="d-block w-100" style="height: 300px;"
+                         src="http://pic25.huitu.com/res/20141217/448_20141217081922090149_1.jpg" alt="Second slide">
+                </div>
+
+            </div>
+
+        </div>
+    {% endblock %}
+    <br>
+    {% block AboutUs %}
+        <div class="container" style="text-align: center">
+            <h2>关于我们</h2>
+            <h4>成为您的出行管家</h4>
+        </div>
+        <br>
+        <div class="container">
+
+            <img src="https://18999947.s61i.faiusr.com/2/AD0Ii9WHCRACGAAgnITI5AUowICssQMwiAQ40QI.jpg"
+                 style="height: 200px;width: 200px;" class="rounded float-right" alt="...">
+            <p>在大众创新，万众创新背景下，每天多有大量的中小企业产生，这些企业中有不少具有较强的品牌意识。打造品牌的靠前步就是注册一个好的商标。</p>
+
+            <p>拥有好商标以后，企业要进行各种各样的创新活动，为了保护相应的创新成果，企业就必须寻求版权/专利的保护。互联网高效、实时交互、个性化等优势铸就了知识产权平台的高速发展。</p>
+
+
+        </div>
+    {% endblock %}
+    <br>
+{% block Card %}
+    <div class="container">
+        <div class="card-deck">
+            <div class="card">
+                <img class="card-img-top"
+                     src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1558619685&di=f2f963fbcbfd8fe0a2c132c9655ac9e4&imgtype=jpg&er=1&src=http%3A%2F%2Ffile03.sg560.com%2Fupimg01%2F2017%2F03%2F999058%2FTitle%2F0941262730447178999058.jpg"
+                     alt="Card image cap">
+                <div class="card-body">
+                    <h5 class="card-title">服务理念</h5>
+                    <p class="card-text">This is a longer card with supporting text below as a natural lead-in to
+                        additional content. This content is a little bit longer.</p>
+                    <p class="card-text">
+                        <small class="text-muted">Last updated 3 mins ago</small>
+                    </p>
+                </div>
+            </div>
+            <div class="card">
+                <img class="card-img-top"
+                     src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1558025004499&di=c92dc16cb0ce5652e8778b60c424c9d3&imgtype=0&src=http%3A%2F%2Fpic2.ooopic.com%2F13%2F52%2F91%2F20b3OOOPIC9a.jpg"
+                     alt="Card image cap">
+                <div class="card-body">
+                    <h5 class="card-title">企业愿景</h5>
+                    <p class="card-text">This card has supporting text below as a natural lead-in to additional
+                        content.</p>
+                    <p class="card-text">
+                        <small class="text-muted">Last updated 3 mins ago</small>
+                    </p>
+                </div>
+            </div>
+            <div class="card">
+                <img class="card-img-top"
+                     src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1558619749&di=c29b98bc194be2a5c05f398d1ec6c83e&imgtype=jpg&er=1&src=http%3A%2F%2Fpic.carnoc.com%2Ffile%2F160115%2F16011505232485.jpg"
+                     alt="Card image cap">
+                <div class="card-body">
+                    <h5 class="card-title">企业使命</h5>
+                    <p class="card-text">This is a wider card with supporting text below as a natural lead-in to
+                        additional content. This card has even longer content than the first to show that equal height
+                        action.</p>
+                    <p class="card-text">
+                        <small class="text-muted">Last updated 3 mins ago</small>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+</div>
+{% include 'foot.html' %}

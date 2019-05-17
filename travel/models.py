@@ -10,7 +10,7 @@ from DjangoUeditor.models import UEditorField  # 头部增加这行代码导入U
 
 
 class Article(models.Model):
-    article = models.ForeignKey('Type', models.DO_NOTHING, primary_key=True)
+    article_id = models.AutoField(primary_key=True)
     position_id = models.IntegerField()
     recommend_id = models.IntegerField()
     title = models.CharField(max_length=40)
@@ -33,7 +33,7 @@ class Article(models.Model):
     class Meta:
         managed = False
         db_table = 'article'
-        verbose_name = '文章'
+        verbose_name = '景点介绍'
         verbose_name_plural = verbose_name
 
     def __str__(self):
@@ -203,19 +203,20 @@ class Flow(models.Model):
 
 
 class Hotel(models.Model):
-    hotel = models.ForeignKey('HotelPrice', models.DO_NOTHING, primary_key=True)
+    hotel_id = models.AutoField(primary_key=True)
     position_id = models.IntegerField()
     name = models.CharField(max_length=40)
     position_city_id = models.IntegerField()
     position_area_id = models.IntegerField()
-    detail_massage = models.CharField(max_length=100)
+    detail_massage = models.TextField()
     lon = models.FloatField()
     lat = models.FloatField()
+    detail_area = models.CharField(max_length=100)
 
     class Meta:
         managed = False
         db_table = 'hotel'
-        verbose_name = '旅馆'
+        verbose_name = '酒店'
         verbose_name_plural = verbose_name
 
 
@@ -253,7 +254,6 @@ class HotelPrice(models.Model):
 
 
 class News(models.Model):
-    id = models.ForeignKey('NewsImg', models.DO_NOTHING, db_column='id', primary_key=True)
     news_title = models.CharField(max_length=40)
     news_body = UEditorField('内容', width=800, height=500,
                              toolbars="full", imagePath="UeditorImg/", filePath="UeditorFile/",
@@ -286,7 +286,7 @@ class NewsImg(models.Model):
 
 
 class Position(models.Model):
-    position = models.ForeignKey('PositionCity', models.DO_NOTHING, primary_key=True)
+    position_id = models.AutoField(primary_key=True)
     province = models.CharField(max_length=100)
     province_url = models.CharField(max_length=2083)
 
@@ -318,7 +318,7 @@ class PositionArea(models.Model):
 
 
 class PositionCity(models.Model):
-    position_city = models.ForeignKey(PositionArea, models.DO_NOTHING, primary_key=True)
+    position_city_id = models.IntegerField(primary_key=True)
     position_id = models.IntegerField()
     city = models.CharField(max_length=40)
 

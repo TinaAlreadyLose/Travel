@@ -23,15 +23,17 @@ from myTravel.settings import MEDIA_ROOT, STATICFILES_DIRS
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('ueditor/', include('DjangoUeditor.urls')),  # 添加DjangoUeditor的URL
-    url('', views.selectAll),
-    url(r'^index.php', views.BootStrap),
-    url(r'^detail.php/', views.detail),
-    url(r'^sightsrecommand.php/', views.sightsRecommand),
-    url(r'^news.php/', views.news),
-    url(r'^media/(?P<path>.*)', serve, {"document_root": MEDIA_ROOT}),
-    url(r'^static/(?P<path>.*)', serve, {"document_root": STATICFILES_DIRS}),
+    path('', views.BootStrap),  # 首页路由
+    url(r'^index.php', views.BootStrap),  # 首页路由
+    url(r'^detail.php/', views.detail),  # 详情页路由
+    url(r'^sightsrecommand.php/', views.sightsRecommand),  # 景点推荐路由
+    url(r'^news.php/', views.news),  # 新闻路由
+    url(r'^contactus.php/', views.contactUs),  # 联系我们路由
+    url(r'^aboutus.php/', views.aboutUs),  # 关于我们路由
+    url(r'^media/(?P<path>.*)', serve, {"document_root": MEDIA_ROOT}),  # 媒体图片路由
+    url(r'^static/(?P<path>.*)', serve, {"document_root": STATICFILES_DIRS}),  # 静态文件路由
     # -------庆------- #
     url(r'^search-post/', views.search_post),
-    url(r'^test.php/', views.test),
-    url(r'^demo.php/', views.flow),
+    url(r'^test.php/', views.test),  # 经纬度
+    url(r'^demo.php/', views.flow),  # 生成流量分析图片路由
 ]
