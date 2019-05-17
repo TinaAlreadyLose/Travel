@@ -63,181 +63,40 @@
             {% block Article %}
                 <div class="container-fluid" style="text-align: center">
                     <p>this is detailed article，使用卡列进行渲染</p>
+
                     <div class="card-columns">
-                        <div class="card">
-                            <img class="card-img-top" src="../media/ArticleImg/2019/05/14/Abstract-1.jpg"
-                                 alt="Card image cap">
-                            <div class="card-body">
-                                <h5 class="card-title">第一个</h5>
-                                <p class="card-text">This is a longer card with supporting text below as a
-                                    natural
-                                    lead-in
-                                    to
-                                    additional
-                                    content. This content is a little bit longer.</p>
+                        {% for article in AllArticle %}
+                            <div class="card">
+                                <img class="card-img-top" src="../media/{{ article.article_img }}"
+                                     alt="Card image cap">
+                                <div class="card-body">
+                                    <h6 class="card-text text-left">作者：{{ article.user }}，观看数：{{ article.views }}</h6>
+                                    <h5 class="card-title">{{ article.title }}</h5>
+                                    <p class="card-text text-left">{{ article.summary }}</p>
+                                    <p class="text-left">
+                                        <a href="http://127.0.0.1:8000/detail/{{ article.url}}.html" class="btn btn-primary">查看全文</a>
+                                    </p>
+                                </div>
                             </div>
-                        </div>
-                        <div class="card">
-                            <img class="card-img-top" src="../media/ArticleImg/2019/05/14/Abstract-1.jpg"
-                                 alt="Card image cap" width="100px" ,height="100px">
-                            <div class="card-body">
-                                <h5 class="card-title">第二个</h5>
-                                <p class="card-text">This is a longer card with supporting text below as a
-                                    natural
-                                    lead-in
-                                    to
-                                    additional
-                                    content. This content is a little bit longer.</p>
-                            </div>
-                        </div>
-                        <div class="card">
-                            <img class="card-img-top" src="../media/ArticleImg/2019/05/14/Abstract-1.jpg"
-                                 alt="Card image cap" width="100px" ,height="100px">
-                            <div class="card-body">
-                                <h5 class="card-title">第三个</h5>
-                                <p class="card-text">This is a longer card with supporting text below as a
-                                    natural
-                                    lead-in
-                                    to
-                                    additional
-                                    content. This content is a little bit longer.</p>
-                            </div>
-                        </div>
-                        <div class="card">
-                            <img class="card-img-top" src="../media/ArticleImg/2019/05/14/Abstract-1.jpg"
-                                 alt="Card image cap" width="100px" ,height="100px">
-                            <div class="card-body">
-                                <h5 class="card-title">第四个</h5>
-                                <p class="card-text">This is a longer card with supporting text below as a
-                                    natural
-                                    lead-in
-                                    to
-                                    additional
-                                    content. This content is a little bit longer.</p>
-                            </div>
-                        </div>
-                        <div class="card">
-                            <img class="card-img-top" src="../media/ArticleImg/2019/05/14/Abstract-1.jpg"
-                                 alt="Card image cap" width="100px" ,height="100px">
-                            <div class="card-body">
-                                <h5 class="card-title">第五个</h5>
-                                <p class="card-text">This is a longer card with supporting text below as a
-                                    natural
-                                    lead-in
-                                    to
-                                    additional
-                                    content. This content is a little bit longer.</p>
-                            </div>
-                        </div>
-                        <div class="card">
-                            <img class="card-img-top" src="../media/ArticleImg/2019/05/14/Abstract-1.jpg"
-                                 alt="Card image cap" width="100px" ,height="100px">
-                            <div class="card-body">
-                                <h5 class="card-title">第六个</h5>
-                                <p class="card-text">This is a longer card with supporting text below as a
-                                    natural
-                                    lead-in
-                                    to
-                                    additional
-                                    content. This content is a little bit longer.</p>
-                            </div>
-                        </div>
-                        <div class="card">
-                            <img class="card-img-top" src="../media/ArticleImg/2019/05/14/Abstract-1.jpg"
-                                 alt="Card image cap" width="100px" ,height="100px">
-                            <div class="card-body">
-                                <h5 class="card-title">第七个e</h5>
-                                <p class="card-text">This is a longer card with supporting text below as a
-                                    natural
-                                    lead-in
-                                    to
-                                    additional
-                                    content. This content is a little bit longer.</p>
-                            </div>
-                        </div>
-                        <div class="card">
-                            <img class="card-img-top" src="../media/ArticleImg/2019/05/14/Abstract-1.jpg"
-                                 alt="Card image cap" width="100px" ,height="100px">
-                            <div class="card-body">
-                                <h5 class="card-title">第八个</h5>
-                                <p class="card-text">This is a longer card with supporting text below as a
-                                    natural
-                                    lead-in
-                                    to
-                                    additional
-                                    content. This content is a little bit longer.</p>
-                            </div>
-                        </div>
-                        <div class="card">
-                            <img class="card-img-top" src="../media/ArticleImg/2019/05/14/Abstract-1.jpg"
-                                 alt="Card image cap" width="100px" ,height="100px">
-                            <div class="card-body">
-                                <h5 class="card-title">第九个</h5>
-                                <p class="card-text">This is a longer card with supporting text below as a
-                                    natural
-                                    lead-in
-                                    to
-                                    additional
-                                    content. This content is a little bit longer.</p>
-                            </div>
-                        </div>
-                        <div class="card">
-                            <img class="card-img-top" src="../media/ArticleImg/2019/05/14/Abstract-1.jpg"
-                                 alt="Card image cap" width="100px" ,height="100px">
-                            <div class="card-body">
-                                <h5 class="card-title">第十个</h5>
-                                <p class="card-text">This is a longer card with supporting text below as a
-                                    natural
-                                    lead-in
-                                    to
-                                    additional
-                                    content. This content is a little bit longer.</p>
-                            </div>
-                        </div>
-                        <div class="card">
-                            <img class="card-img-top" src="../media/ArticleImg/2019/05/14/Abstract-1.jpg"
-                                 alt="Card image cap" width="100px" ,height="100px">
-                            <div class="card-body">
-                                <h5 class="card-title">第十一个</h5>
-                                <p class="card-text">This is a longer card with supporting text below as a
-                                    natural
-                                    lead-in
-                                    to
-                                    additional
-                                    content. This content is a little bit longer.</p>
-                            </div>
-                        </div>
-                        <div class="card">
-                            <img class="card-img-top" src="../media/ArticleImg/2019/05/14/Abstract-1.jpg"
-                                 alt="Card image cap" width="100px" ,height="100px">
-                            <div class="card-body">
-                                <h5 class="card-title">第十二个</h5>
-                                <p class="card-text">This is a longer card with supporting text below as a
-                                    natural
-                                    lead-in
-                                    to
-                                    additional
-                                    content. This content is a little bit longer.</p>
-                            </div>
-                        </div>
+                        {% endfor %}
                     </div>
                 </div>
             {% endblock %}
-            {% block Pageination %}
-                <nav aria-label="Page navigation example">
-                    <ul class="pagination justify-content-end">
-                        <li class="page-item disabled">
-                            <a class="page-link" href="#" tabindex="-1">上一页</a>
-                        </li>
-                        <li class="page-item"><a class="page-link" href="#">1</a></li>
-                        <li class="page-item"><a class="page-link" href="#">2</a></li>
-                        <li class="page-item"><a class="page-link" href="#">3</a></li>
-                        <li class="page-item">
-                            <a class="page-link" href="#">下一页</a>
-                        </li>
-                    </ul>
-                </nav>
-            {% endblock %}
+{#            {% block Pageination %}#}
+{#                <nav aria-label="Page navigation example">#}
+{#                    <ul class="pagination justify-content-end">#}
+{#                        <li class="page-item disabled">#}
+{#                            <a class="page-link" href="#" tabindex="-1">上一页</a>#}
+{#                        </li>#}
+{#                        <li class="page-item"><a class="page-link" href="#">1</a></li>#}
+{#                        <li class="page-item"><a class="page-link" href="#">2</a></li>#}
+{#                        <li class="page-item"><a class="page-link" href="#">3</a></li>#}
+{#                        <li class="page-item">#}
+{#                            <a class="page-link" href="#">下一页</a>#}
+{#                        </li>#}
+{#                    </ul>#}
+{#                </nav>#}
+{#            {% endblock %}#}
         </div>
     </div>
 </div>

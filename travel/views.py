@@ -1,6 +1,6 @@
 from django.shortcuts import render, HttpResponse
-from .models import Article, ArticleImg, Banner, Flow, Hotel, HotelImg, HotelPrice, News, NewsImg, Position, Type, \
-    PositionCity, PositionArea
+from .models import Article, ArticleImg, Banner, Flow, Hotel, HotelImg, HotelPrice, News, NewsImg, Type
+
 import requests
 
 from django.shortcuts import render
@@ -33,10 +33,8 @@ def selectAll(request):
     AllHotelPrice = HotelPrice.objects.all()
     AllNews = News.objects.all()
     AllNewsImg = NewsImg.objects.all()
-    AllPosition = Position.objects.all()
     AllType = Type.objects.all()
-    AllPositionCity = PositionCity.objects.all()
-    AllPositionArea = PositionArea.objects.all()
+
     context = {
         'AllArticle': AllArticle,
         'AllArticleImg': AllArticleImg,
@@ -47,27 +45,49 @@ def selectAll(request):
         'AllHotelPrice': AllHotelPrice,
         'AllNews': AllNews,
         'AllNewsImg': AllNewsImg,
-        'AllPosition': AllPosition,
         'AllType': AllType,
-        'AllPositionCity': AllPositionCity,
-        'AllPositionArea': AllPositionArea,
+
     }
     return render(request, 'index.html', context)
 
 
 # 首页路由请求
 def BootStrap(request):
-    return render(request, 'bootStrap.html')
+    AllArticle = Article.objects.all()
+    context = {
+        'AllArticle': AllArticle,
+    }
+    return render(request, 'bootStrap.html', context)
 
 
 # 详细网页路由请求
-def detail(request):
-    return render(request, 'detail.html')
+def detail(request, url):
+    print(url)
+    # print(isinstance(url, str))
+    detailArticle = Article.objects.get(url=url)
+    banners = ArticleImg.objects.filter(article_id=detailArticle.article_id)
+    types = Type.objects.filter(article_id=detailArticle.article_id)
+    print(detailArticle.article_id)
+    # print(type(banners))
+    context = {
+        "detailArticle": detailArticle,
+        "banners": banners,
+        "types": types,
+    }
+    return render(request, 'detail.html', context)
 
 
 # 景区路由请求
 def sightsRecommand(request):
-    return render(request, 'sightsRecommend.html')
+    hotArticles = Article.objects.filter(recommend_id=1)
+    hotArticles2 = Article.objects.filter(recommend_id=2)
+    otherArticles = Article.objects.filter(recommend_id=0)
+    context = {
+        'hotArticles': hotArticles,
+        'hotArticles2': hotArticles2,
+        'otherArticles': otherArticles
+    }
+    return render(request, 'sightsRecommend.html', context)
 
 
 # 新闻路由请求

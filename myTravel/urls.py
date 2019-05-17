@@ -25,7 +25,7 @@ urlpatterns = [
     path('ueditor/', include('DjangoUeditor.urls')),  # 添加DjangoUeditor的URL
     path('', views.BootStrap),  # 首页路由
     url(r'^index.php', views.BootStrap),  # 首页路由
-    url(r'^detail.php/', views.detail),  # 详情页路由
+    url(r'^detail/([\u4e00-\u9fa5_a-zA-Z0-9]+).html$', views.detail, name='detail'),  # 详情页路由
     url(r'^sightsrecommand.php/', views.sightsRecommand),  # 景点推荐路由
     url(r'^news.php/', views.news),  # 新闻路由
     url(r'^contactus.php/', views.contactUs),  # 联系我们路由

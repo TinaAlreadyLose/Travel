@@ -11,7 +11,7 @@ from DjangoUeditor.models import UEditorField  # 头部增加这行代码导入U
 
 class Article(models.Model):
     article_id = models.AutoField(primary_key=True)
-    position_id = models.IntegerField()
+    position = models.CharField(max_length=40)
     recommend_id = models.IntegerField()
     title = models.CharField(max_length=40)
     body = UEditorField('内容', width=800, height=500,
@@ -23,12 +23,13 @@ class Article(models.Model):
     views = models.IntegerField()
     created_time = models.DateTimeField()
     url = models.CharField(max_length=2083)
-    position_city_id = models.IntegerField()
-    position_area_id = models.IntegerField()
+    position_city = models.CharField(max_length=40)
+    position_area = models.CharField(max_length=40)
     detail_area = models.CharField(max_length=100)
     lon = models.FloatField()
     lat = models.FloatField()
     summary = models.CharField(max_length=40)
+    article_img = models.ImageField(upload_to='ArticleImg/%Y/%m/%d')
 
     class Meta:
         managed = False
@@ -54,72 +55,6 @@ class ArticleImg(models.Model):
         return str(self.id) + ': 文章' + str(self.article_id) + '的图片'
 
 
-# class AuthGroup(models.Model):
-#     name = models.CharField(unique=True, max_length=150)
-#
-#     class Meta:
-#         managed = False
-#         db_table = 'auth_group'
-#
-#
-# class AuthGroupPermissions(models.Model):
-#     group = models.ForeignKey(AuthGroup, models.DO_NOTHING)
-#     permission = models.ForeignKey('AuthPermission', models.DO_NOTHING)
-#
-#     class Meta:
-#         managed = False
-#         db_table = 'auth_group_permissions'
-#         unique_together = (('group', 'permission'),)
-#
-#
-# class AuthPermission(models.Model):
-#     name = models.CharField(max_length=255)
-#     content_type = models.ForeignKey('DjangoContentType', models.DO_NOTHING)
-#     codename = models.CharField(max_length=100)
-#
-#     class Meta:
-#         managed = False
-#         db_table = 'auth_permission'
-#         unique_together = (('content_type', 'codename'),)
-
-
-# class AuthUser(models.Model):
-#     password = models.CharField(max_length=128)
-#     last_login = models.DateTimeField(blank=True, null=True)
-#     is_superuser = models.IntegerField()
-#     username = models.CharField(unique=True, max_length=150)
-#     first_name = models.CharField(max_length=30)
-#     last_name = models.CharField(max_length=150)
-#     email = models.CharField(max_length=254)
-#     is_staff = models.IntegerField()
-#     is_active = models.IntegerField()
-#     date_joined = models.DateTimeField()
-#
-#     class Meta:
-#         managed = False
-#         db_table = 'auth_user'
-#
-#
-# class AuthUserGroups(models.Model):
-#     user = models.ForeignKey(AuthUser, models.DO_NOTHING)
-#     group = models.ForeignKey(AuthGroup, models.DO_NOTHING)
-#
-#     class Meta:
-#         managed = False
-#         db_table = 'auth_user_groups'
-#         unique_together = (('user', 'group'),)
-#
-#
-# class AuthUserUserPermissions(models.Model):
-#     user = models.ForeignKey(AuthUser, models.DO_NOTHING)
-#     permission = models.ForeignKey(AuthPermission, models.DO_NOTHING)
-#
-#     class Meta:
-#         managed = False
-#         db_table = 'auth_user_user_permissions'
-#         unique_together = (('user', 'permission'),)
-
-
 class Banner(models.Model):
     text_info = models.TextField()
     img = models.CharField(max_length=2083)
@@ -134,50 +69,6 @@ class Banner(models.Model):
 
     def __str__(self):
         return str(self.id) + ': ' + self.text_info
-
-
-# class DjangoAdminLog(models.Model):
-#     action_time = models.DateTimeField()
-#     object_id = models.TextField(blank=True, null=True)
-#     object_repr = models.CharField(max_length=200)
-#     action_flag = models.PositiveSmallIntegerField()
-#     change_message = models.TextField()
-#     content_type = models.ForeignKey('DjangoContentType', models.DO_NOTHING, blank=True, null=True)
-#     user = models.ForeignKey(AuthUser, models.DO_NOTHING)
-#
-#     class Meta:
-#         managed = False
-#         db_table = 'django_admin_log'
-#
-#
-# class DjangoContentType(models.Model):
-#     app_label = models.CharField(max_length=100)
-#     model = models.CharField(max_length=100)
-#
-#     class Meta:
-#         managed = False
-#         db_table = 'django_content_type'
-#         unique_together = (('app_label', 'model'),)
-#
-#
-# class DjangoMigrations(models.Model):
-#     app = models.CharField(max_length=255)
-#     name = models.CharField(max_length=255)
-#     applied = models.DateTimeField()
-#
-#     class Meta:
-#         managed = False
-#         db_table = 'django_migrations'
-#
-#
-# class DjangoSession(models.Model):
-#     session_key = models.CharField(primary_key=True, max_length=40)
-#     session_data = models.TextField()
-#     expire_date = models.DateTimeField()
-#
-#     class Meta:
-#         managed = False
-#         db_table = 'django_session'
 
 
 class Flow(models.Model):
@@ -204,10 +95,10 @@ class Flow(models.Model):
 
 class Hotel(models.Model):
     hotel_id = models.AutoField(primary_key=True)
-    position_id = models.IntegerField()
+    position = models.CharField(max_length=40)
     name = models.CharField(max_length=40)
-    position_city_id = models.IntegerField()
-    position_area_id = models.IntegerField()
+    position_city = models.CharField(max_length=40)
+    position_area = models.CharField(max_length=40)
     detail_massage = models.TextField()
     lon = models.FloatField()
     lat = models.FloatField()
@@ -283,54 +174,6 @@ class NewsImg(models.Model):
 
     def __str__(self):
         return str(self.id) + ': 新闻' + str(self.news_id) + '的图片'
-
-
-class Position(models.Model):
-    position_id = models.AutoField(primary_key=True)
-    province = models.CharField(max_length=100)
-    province_url = models.CharField(max_length=2083)
-
-    class Meta:
-        managed = False
-        db_table = 'position'
-        verbose_name = '省-区域'
-        verbose_name_plural = verbose_name
-
-    def __str__(self):
-        return str(self.position_id) + ': ' + str(self.province)
-
-
-class PositionArea(models.Model):
-    position_area_id = models.AutoField(primary_key=True)
-    position_city_id = models.IntegerField()
-    area = models.CharField(max_length=255)
-    lon = models.FloatField()
-    lat = models.FloatField()
-
-    class Meta:
-        managed = False
-        db_table = 'position_area'
-        verbose_name = '区-区域'
-        verbose_name_plural = verbose_name
-
-    def __str__(self):
-        return str(self.position_area_id) + ': ' + str(self.area)
-
-
-class PositionCity(models.Model):
-    position_city_id = models.IntegerField(primary_key=True)
-    position_id = models.IntegerField()
-    city = models.CharField(max_length=40)
-
-    class Meta:
-        managed = False
-        db_table = 'position_city'
-        verbose_name = '市-区域'
-        verbose_name_plural = verbose_name
-
-    def __str__(self):
-        return str(self.position_city_id) + ': ' + str(self.city)
-
 
 class Type(models.Model):
     article_id = models.IntegerField()
