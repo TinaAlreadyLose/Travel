@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    {% for flow in flows %}
+        <h3>{{ flow.article_id }}</h3>
+        <img src="../media/{{ flow.flow_img }}"/>
+    {% endfor %}
+</body>
+</html>

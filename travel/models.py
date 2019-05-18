@@ -74,14 +74,14 @@ class Banner(models.Model):
 class Flow(models.Model):
     article_id = models.IntegerField()
     name = models.CharField(max_length=40)
-    max = models.BigIntegerField()
-    time1_flow = models.BigIntegerField()
-    time2_flow = models.BigIntegerField()
-    time3_flow = models.BigIntegerField()
-    time4_flow = models.BigIntegerField()
-    time5_flow = models.BigIntegerField()
-    time_6flow = models.BigIntegerField()
-    flow_img = models.ImageField(upload_to='FlowImg')
+    max = models.FloatField()
+    time1_flow = models.FloatField()
+    time2_flow = models.FloatField()
+    time3_flow = models.FloatField()
+    time4_flow = models.FloatField()
+    time5_flow = models.FloatField()
+    time6_flow = models.FloatField()
+    flow_img = models.CharField(max_length=2083)
 
     class Meta:
         managed = False
@@ -99,10 +99,17 @@ class Hotel(models.Model):
     name = models.CharField(max_length=40)
     position_city = models.CharField(max_length=40)
     position_area = models.CharField(max_length=40)
-    detail_massage = models.TextField()
+    detail_massage = UEditorField('内容', width=800, height=500,
+                                  toolbars="full", imagePath="UeditorImg/", filePath="UeditorFile/",
+                                  upload_settings={"imageMaxSize": 9204000},
+                                  settings={}, command=None, blank=True
+                                  )
     lon = models.FloatField()
     lat = models.FloatField()
     detail_area = models.CharField(max_length=100)
+    url = models.CharField(max_length=2083)
+    avg_price = models.FloatField()
+    summary = models.CharField(max_length=100)
 
     class Meta:
         managed = False
@@ -151,6 +158,10 @@ class News(models.Model):
                              upload_settings={"imageMaxSize": 9204000},
                              settings={}, command=None, blank=True
                              )
+    recommend_id = models.CharField(max_length=2083)  # add new on 17/05/2017
+    news_img = models.ImageField(upload_to='NewsImg/%Y/%m/%d')  # add new on 17/05/2017
+    url = models.CharField(max_length=2083)  # add new on 17/05/2017
+    summary = models.CharField(max_length=100)  # add new on 17/05/2017
 
     class Meta:
         managed = False
@@ -174,6 +185,7 @@ class NewsImg(models.Model):
 
     def __str__(self):
         return str(self.id) + ': 新闻' + str(self.news_id) + '的图片'
+
 
 class Type(models.Model):
     article_id = models.IntegerField()

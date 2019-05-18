@@ -92,7 +92,25 @@ def sightsRecommand(request):
 
 # 新闻路由请求
 def news(request):
-    return render(request, 'news.html')
+    hotNews = News.objects.filter(recommend_id=1)
+    otherNews = News.objects.filter(recommend_id=0)
+    context = {
+        'hotNews': hotNews,
+        'otherNews': otherNews,
+    }
+    return render(request, 'news.html', context)
+
+
+# 详细新闻路由
+def detail_news(request, url):
+    print(url)
+    detail_news = News.objects.get(url=url)
+    banners = NewsImg.objects.filter(news_id=detail_news.id)
+    context = {
+        'detail_news': detail_news,
+        'banners': banners
+    }
+    return render(request, 'detail_news.html', context)
 
 
 def aboutUs(request):
@@ -133,7 +151,7 @@ def get_distance_hav(lat0, lng0, lat1, lng1):
 
 
 #            流量分析图                   #
-def flow_index(names, y, title):
+def flow_index(names, y, title, id):
     x = range(len(names))
     plt.plot(x, y, marker='o', mec='r', mfc='w', label=u'flow')
     plt.legend()  # 让图例生效
@@ -144,16 +162,31 @@ def flow_index(names, y, title):
     plt.ylabel("流量")  # y轴标签
     plt.title(title + "风景区")  # 标题
     plt.savefig('media/FlowImg/' + title + '.jpg')
+    Flow.objects.filter(article_id=id).update(flow_img='FlowImg/' + title + '.jpg')
     return
 
 
 def flow(request):
     names = ["2019-01", "2019-02", "2019-03", "2019-04", "2019-05", "2019-6"]
-    y = [1000, 3000, 2000, 4000, 7000, 3000]
-    title = "泰山"
-    flow_index(names, y, title)
-    plt.rc('font', family=['Microsoft YaHei'])
-    return HttpResponse(plt.show())
+    flows = Flow.objects.all()
+    for flow in flows:
+        y = list()
+        if flow.flow_img == '0':
+            y.append(flow.time1_flow)
+            y.append(flow.time2_flow)
+            y.append(flow.time3_flow)
+            y.append(flow.time4_flow)
+            y.append(flow.time5_flow)
+            y.append(flow.time6_flow)
+            title = flow.name
+            flow_index(names, y, title, int(flow.article_id))
+            plt.rc('font', family=['Microsoft YaHei'])
+
+    newFlows = Flow.objects.all()
+    context = {
+            'flows': newFlows
+        }
+    return render(request, 'flow.html', context)
 
 
 #     获取详细地址的经纬度信息函数        #
