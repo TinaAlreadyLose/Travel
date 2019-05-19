@@ -14,7 +14,7 @@ import hashlib
 # 流量分析图
 import sys
 import matplotlib
-import matplotlib.pyplot as plt  # 使用mateplotlib生成折线图
+import matplotlib.pyplot  # 使用mateplotlib生成折线图
 from pylab import *
 
 mpl.rcParams['font.sans-serif'] = ['Microsoft YaHei']
@@ -60,6 +60,19 @@ def BootStrap(request):
     return render(request, 'bootStrap.html', context)
 
 
+# 景区路由请求
+def sightsRecommand(request):
+    hotArticles = Article.objects.filter(recommend_id=1)
+    hotArticles2 = Article.objects.filter(recommend_id=2)
+    otherArticles = Article.objects.filter(recommend_id=0)
+    context = {
+        'hotArticles': hotArticles,
+        'hotArticles2': hotArticles2,
+        'otherArticles': otherArticles
+    }
+    return render(request, 'sightsRecommend.html', context)
+
+
 # 详细网页路由请求
 def detail(request, url):
     print(url)
@@ -75,19 +88,6 @@ def detail(request, url):
         "types": types,
     }
     return render(request, 'detail.html', context)
-
-
-# 景区路由请求
-def sightsRecommand(request):
-    hotArticles = Article.objects.filter(recommend_id=1)
-    hotArticles2 = Article.objects.filter(recommend_id=2)
-    otherArticles = Article.objects.filter(recommend_id=0)
-    context = {
-        'hotArticles': hotArticles,
-        'hotArticles2': hotArticles2,
-        'otherArticles': otherArticles
-    }
-    return render(request, 'sightsRecommend.html', context)
 
 
 # 新闻路由请求
@@ -111,6 +111,75 @@ def detail_news(request, url):
         'banners': banners
     }
     return render(request, 'detail_news.html', context)
+
+
+#            流量分析图                   #
+def flow_index(names, y, title, id):
+    x = range(len(names))
+    plt = matplotlib.pyplot
+    plt.cla()
+    plt.rc('font', family=['Microsoft YaHei'])
+    plt.plot(x, y, marker='o', mec='r', mfc='w', label=u'flow')
+    plt.legend()  # 让图例生效
+    plt.xticks(x, names, rotation=45)
+    plt.margins(0)
+    plt.subplots_adjust(bottom=0.15)
+    plt.xlabel(u"日期")  # x轴标签
+    plt.ylabel("流量")  # y轴标签
+    plt.title(title + "风景区")  # 标题
+    plt.savefig('media/FlowImg/' + title + '.jpg')
+    Flow.objects.filter(article_id=id).update(flow_img='FlowImg/' + title + '.jpg')
+    return
+
+
+# 流量统计路由
+def flows(request):
+    names = ["2019-01", "2019-02", "2019-03", "2019-04", "2019-05", "2019-6"]
+    flows = Flow.objects.all()
+    y = []
+    for flow in flows:
+        if flow.flow_img == '0':
+            y.append(flow.time1_flow)
+            y.append(flow.time2_flow)
+            y.append(flow.time3_flow)
+            y.append(flow.time4_flow)
+            y.append(flow.time5_flow)
+            y.append(flow.time6_flow)
+            title = flow.name
+            flow_index(names, y, title, int(flow.article_id))
+            y.clear()
+
+    newFlows = Flow.objects.all()
+    allArticle = []
+    for flow in newFlows:
+        article = Article.objects.get(article_id=flow.article_id)
+        allArticle.append(article)
+    articleAndFlow=zip(allArticle,flows)
+    context = {
+        'articleAndFlow':articleAndFlow
+    }
+    return render(request, 'flow.html', context)
+
+
+# 酒店路由
+def hotels(request):
+    allHotels = Hotel.objects.all()
+    context = {
+        'allHotels': allHotels,
+    }
+    return render(request, 'hotels.html', context)
+
+
+def detail_hotel(request, url):
+    detail_hotel = Hotel.objects.get(url=url)
+    detail_hotel_prices = HotelPrice.objects.filter(hotel_id=detail_hotel.hotel_id)
+    detail_hotel_imgs = HotelImg.objects.filter(hotel_id=detail_hotel.hotel_id)
+    context = {
+        'detail_hotel': detail_hotel,
+        'detail_hotel_prices': detail_hotel_prices,
+        'detail_hotel_imgs': detail_hotel_imgs,
+    }
+    return render(request, 'detail_hotel.html', context)
 
 
 def aboutUs(request):
@@ -148,45 +217,6 @@ def get_distance_hav(lat0, lng0, lat1, lng1):
     h = hav(dlat) + cos(lat0) * cos(lat1) * hav(dlng)
     distance = 2 * EARTH_RADIUS * asin(sqrt(h))
     return distance
-
-
-#            流量分析图                   #
-def flow_index(names, y, title, id):
-    x = range(len(names))
-    plt.plot(x, y, marker='o', mec='r', mfc='w', label=u'flow')
-    plt.legend()  # 让图例生效
-    plt.xticks(x, names, rotation=45)
-    plt.margins(0)
-    plt.subplots_adjust(bottom=0.15)
-    plt.xlabel(u"日期")  # x轴标签
-    plt.ylabel("流量")  # y轴标签
-    plt.title(title + "风景区")  # 标题
-    plt.savefig('media/FlowImg/' + title + '.jpg')
-    Flow.objects.filter(article_id=id).update(flow_img='FlowImg/' + title + '.jpg')
-    return
-
-
-def flow(request):
-    names = ["2019-01", "2019-02", "2019-03", "2019-04", "2019-05", "2019-6"]
-    flows = Flow.objects.all()
-    for flow in flows:
-        y = list()
-        if flow.flow_img == '0':
-            y.append(flow.time1_flow)
-            y.append(flow.time2_flow)
-            y.append(flow.time3_flow)
-            y.append(flow.time4_flow)
-            y.append(flow.time5_flow)
-            y.append(flow.time6_flow)
-            title = flow.name
-            flow_index(names, y, title, int(flow.article_id))
-            plt.rc('font', family=['Microsoft YaHei'])
-
-    newFlows = Flow.objects.all()
-    context = {
-            'flows': newFlows
-        }
-    return render(request, 'flow.html', context)
 
 
 #     获取详细地址的经纬度信息函数        #

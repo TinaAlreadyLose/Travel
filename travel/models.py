@@ -48,7 +48,7 @@ class ArticleImg(models.Model):
     class Meta:
         managed = False
         db_table = 'article_img'
-        verbose_name = '文章图片'
+        verbose_name = '景点图片'
         verbose_name_plural = verbose_name
 
     def __str__(self):
@@ -64,7 +64,7 @@ class Banner(models.Model):
     class Meta:
         managed = False
         db_table = 'banner'
-        verbose_name = '幻灯片'
+        verbose_name = '首页轮播图'
         verbose_name_plural = verbose_name
 
     def __str__(self):
@@ -110,12 +110,16 @@ class Hotel(models.Model):
     url = models.CharField(max_length=2083)
     avg_price = models.FloatField()
     summary = models.CharField(max_length=100)
+    img=models.ImageField(upload_to='HotelImg/%Y/%m/%d')
 
     class Meta:
         managed = False
         db_table = 'hotel'
         verbose_name = '酒店'
         verbose_name_plural = verbose_name
+
+    def __str__(self):
+        return str(self.hotel_id) + ':' + str(self.name)
 
 
 def __str__(self):
@@ -129,7 +133,7 @@ class HotelImg(models.Model):
     class Meta:
         managed = False
         db_table = 'hotel_img'
-        verbose_name = '旅馆图片'
+        verbose_name = '酒店图片'
         verbose_name_plural = verbose_name
 
     def __str__(self):
@@ -144,7 +148,7 @@ class HotelPrice(models.Model):
     class Meta:
         managed = False
         db_table = 'hotel_price'
-        verbose_name = '旅馆价格'
+        verbose_name = '酒店价格'
         verbose_name_plural = verbose_name
 
     def __str__(self):

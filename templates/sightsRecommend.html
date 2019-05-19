@@ -70,6 +70,9 @@
                         <div class="card-body">
                             <h5 class="card-title">{{ hotArticle.title }}</h5>
                             <p class="card-text">{{ hotArticle.summary }}</p>
+                            <p class="text-left">
+                                <a href="http://127.0.0.1:8000/detail/{{ hotArticle.url }}.html" class="btn btn-primary">查看全文</a>
+                            </p>
                         </div>
                         <div class="card-footer">
                             <small class="text-muted">创建于{{ hotArticle.created_time }}</small>
@@ -85,6 +88,9 @@
                         <div class="card-body">
                             <h5 class="card-title">{{ hotArticle.title }}</h5>
                             <p class="card-text">{{ hotArticle.summary }}</p>
+                            <p class="text-left">
+                                <a href="http://127.0.0.1:8000/detail/{{ hotArticle.url }}.html" class="btn btn-primary">查看全文</a>
+                            </p>
                         </div>
                         <div class="card-footer">
                             <small class="text-muted">创建于{{ hotArticle.created_time }}</small>
@@ -112,6 +118,10 @@
                             <div class="card-body">
                                 <h5 class="card-title">{{ otherArticle.title }}</h5>
                                 <p class="card-text">{{ otherArticle.summary }}</p>
+                                <p class="text-left">
+                                    <a href="http://127.0.0.1:8000/detail/{{ otherArticle.url }}.html"
+                                       class="btn btn-primary">查看全文</a>
+                                </p>
                             </div>
                         </div>
                     {% endfor %}
