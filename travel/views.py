@@ -1,4 +1,4 @@
-from django.shortcuts import render, HttpResponse
+from django.shortcuts import render, HttpResponse, redirect
 from .models import Article, ArticleImg, Banner, Flow, Hotel, HotelImg, HotelPrice, News, NewsImg, Type
 
 import requests
@@ -16,6 +16,9 @@ import sys
 import matplotlib
 import matplotlib.pyplot  # 使用mateplotlib生成折线图
 from pylab import *
+
+from django.contrib.auth.models import User  # 创建普通用户
+from django.contrib.auth import authenticate, login  # 用户登录
 
 mpl.rcParams['font.sans-serif'] = ['Microsoft YaHei']
 
@@ -154,9 +157,9 @@ def flows(request):
     for flow in newFlows:
         article = Article.objects.get(article_id=flow.article_id)
         allArticle.append(article)
-    articleAndFlow=zip(allArticle,flows)
+    articleAndFlow = zip(allArticle, flows)
     context = {
-        'articleAndFlow':articleAndFlow
+        'articleAndFlow': articleAndFlow
     }
     return render(request, 'flow.html', context)
 
@@ -275,3 +278,116 @@ def request_address(request):
 #       获取到经纬度测距信息#
 def test(request):
     return render(request, 'test.html')
+
+
+#  ------庆2- #
+#          省区信息查询    #
+def pro(request):
+    city = {}  # 存放city信息
+    country = {}  # 存放country信息
+    #      山东省城市            #
+    shandong = open('json/山东省.json', encoding='utf-8')
+    sd = json.load(shandong)
+    sd_city = '山东省'
+    # city.setdefault('city',[]).append(sd_city)
+    for i in sd['cityList']:
+        city.setdefault(sd_city, []).append(i['name'])  # 获取山东省的全部城市
+        country.setdefault(0, []).append(i['name'])  # 获取山东省的全部城市
+    #       山西省城市          #
+    shanxi = open('json/山西省.json', encoding='utf-8')
+    sx = json.load(shanxi)
+    sx_city = '山西省'
+    # city.setdefault('city', []).append(sx_city)
+    for i in sx['cityList']:
+        city.setdefault(sx_city, []).append(i['name'])  # 获取山西省的全部城市
+        country.setdefault(1, []).append(i['name'])  # 获取山西省的全部城市
+    print(city)
+    print(country)
+    return render(request, 'test.html', {
+        'city': city,
+        'country': country
+    })
+
+
+#     用户注册页面     #
+def register(request):
+    return render(request, 'register.html')
+
+
+#     用户注册请求   #
+def register_user(request):
+    check_user = 1  # 标记user是否存在，1为通过
+    check_mail = 1  # 标记email是否存在，1为通过
+    user = {}
+    if request.POST:
+        user['username'] = request.POST['username']
+        user['password'] = request.POST['password']
+        user['name'] = request.POST['name']
+        user['idcard'] = request.POST['idcard']
+        user['email'] = request.POST['email']
+        user['telphone'] = request.POST['telphone']
+
+    # 判断数据库user中该用户名是否已经存在
+    try:
+        check_username = User.objects.get(username=user['username'])
+        # 若存在该用户名，该值不为0
+    except Exception as e:
+        check_username = 0
+    # 判断数据库email中该邮箱是否已存在
+    try:
+        check_email = User.objects.get(email=user['email'])
+        # 若存在该用户名，该值不为0
+    except Exception as e:
+        check_email = 0
+
+    # 创建普通用户
+    if check_username == 0 and check_email == 0:
+        User.objects.create_user(username=user['username'], password=user['password'], email=user['email'])  # 成功创建用户
+        return render(request, 'sign_in.html')  # 渲染到登录页
+    else:
+        if (check_username != 0):
+            check_user = 0
+        elif (check_email != 0):
+            check_mail = 0
+        elif (check_email != 0 and check_username != 0):
+            check_user = 0
+            check_mail = 0
+
+        return render(request, 'register.html', {
+            'check_username': check_user,
+            'check_email': check_mail,
+            "user": user,
+        })
+
+
+#      用户登录页面    #
+def sign_in(request):
+    return render(request, 'sign_in.html')
+
+
+#        用户登录      #
+def sign_in_user(request):
+    check_password = 1
+    sign_in_user = {}
+    if request.POST:
+        sign_in_user['username'] = request.POST['username']
+        sign_in_user['password'] = request.POST['password']
+    user = authenticate(username=sign_in_user['username'], password=sign_in_user['password'])
+    if user is not None:
+        login(request, user)
+        return redirect('http://127.0.0.1:8000/')
+    else:
+        try:
+            check_username = User.objects.get(username=sign_in_user['username'])
+            # 若存在该用户名，该值不为0
+        except Exception as e:
+            check_username = 0  # 没有找到该用户名
+        print(check_username)
+        if check_username != 0:
+            check_password = 0  # 密码不对
+        print(check_password)
+
+        return render(request, 'sign_in.html', {
+            'check_username': check_username,
+            'check_password': check_password,
+        })

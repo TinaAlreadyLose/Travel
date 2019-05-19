@@ -35,9 +35,13 @@ urlpatterns = [
     url(r'^media/(?P<path>.*)', serve, {"document_root": MEDIA_ROOT}),  # 媒体图片路由
     url(r'^static/(?P<path>.*)', serve, {"document_root": STATICFILES_DIRS}),  # 静态文件路由
     url(r'^flows.php', views.flows),  # 生成流量分析图片路由
-    url(r'^hotels.php',views.hotels), #酒店路由
+    url(r'^hotels.php', views.hotels),  # 酒店路由
     # -------庆------- #
     url(r'^search-post/', views.search_post),
     url(r'^test.php/', views.test),  # 经纬度
+    url(r'^register_user', views.register_user),
+    url(r'^register.php', views.register),
+    url(r'^sign_in.php', views.sign_in),
+    url(r'^sign_in_user', views.sign_in_user),
 
 ]
