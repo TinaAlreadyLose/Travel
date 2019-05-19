@@ -1,4 +1,4 @@
-from django.shortcuts import render, HttpResponse, redirect
+from django.shortcuts import render, HttpResponse, redirect, HttpResponseRedirect
 from .models import Article, ArticleImg, Banner, Flow, Hotel, HotelImg, HotelPrice, News, NewsImg, Type
 
 import requests
@@ -375,7 +375,7 @@ def sign_in_user(request):
     user = authenticate(username=sign_in_user['username'], password=sign_in_user['password'])
     if user is not None:
         login(request, user)
-        return redirect('http://127.0.0.1:8000/')
+        return HttpResponseRedirect('http://127.0.0.1:8000/')
     else:
         try:
             check_username = User.objects.get(username=sign_in_user['username'])
