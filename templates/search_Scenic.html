@@ -1,0 +1,7 @@
+
+<form class="form-inline" style="background-color:rgba(0,0,0,0)" action="/search-scenic" method="post">
+    {% csrf_token %}
+    <label for="scenic">景点名称</label>&nbsp;&nbsp;
+    <input class="form-control mr-sm-2" id="scenic" type="search" placeholder="景点" aria-label="Search" name="scenic">
+    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">搜索</button>
+</form>

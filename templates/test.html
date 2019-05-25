@@ -5,19 +5,13 @@
     <title>test</title>
 </head>
 <body>
-<form action="/search-post" method="post">
-    {% csrf_token %}
-    <input type="text" name="address1">
-    <input type="text" name="address2">
-    <input type="submit" value="submit">
-</form>
+{{ a }}
+<script type="text/javascript">
+    var value2 = {"list":[ {"password":"1230","username":"coolcooldool"}, {"password":"thisis2","username":"okokok"}], "array":[{"password":"1230","username":"coolcooldool"},{"password":"thisis2","username":"okokok"}]};
 
-<p>
-    {#    {{ address1_lat }}#}
-    {#    {{ address1_lng }}#}
-    {#    {{ address2_lat }}#}
-    {#    {{ address2_lng }}#}
-    {{ d }}
-</p>
+    var obj2 = eval(value2);
+    alert(obj2.list[0].password);
+
+</script>
 </body>
 </html>

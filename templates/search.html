@@ -1,43 +1,38 @@
 <div class="container">
     <div class="row">
+        <form action="/position" method="post">
+        {% csrf_token %}
         <div class="d-inline p-2">
-            <select data-placeholder="Choose a Country..." class="select" tabindex="1">
-                <p class="text-primary">
-                    <option value="" class="select">请选择省></option>
-                </p>
-                <option value="United States">United States</option>
-                <option value="United Kingdom">United Kingdom</option>
-                <option value="Afghanistan">Afghanistan</option>
-                <option value="Aland Islands">Aland Islands</option>
-                <option value="Albania">Albania</option>
-                <option value="Algeria">Algeria</option>
+            <select data-placeholder="Choose a Country..." class="select" tabindex="1" id="city" name="city">
+                <p class="text-primary"><option value="" class="select" name="">请选择省</option></p>
+                {% for i in city %}
+                     <option value='{{ i }}'>{{ i }}</option>
+                {% endfor %}
             </select>
         </div>
         <div class="d-inline p-2">
-            <select data-placeholder="Choose a Country..." class="select" tabindex="1">
-                <option value="" class="select">请选择市</option>
-                <option value="United States">United States</option>
-                <option value="United Kingdom">United Kingdom</option>
-                <option value="Afghanistan">Afghanistan</option>
-                <option value="Aland Islands">Aland Islands</option>
-                <option value="Albania">Albania</option>
-                <option value="Algeria">Algeria</option>
-            </select>
-        </div>
-        <div class="d-inline p-2">
-            <select data-placeholder="Choose a Country..." class="select" tabindex="1">
-                <option value="" class="select">请选择区</option>
-                <option value="United States">United States</option>
-                <option value="United Kingdom">United Kingdom</option>
-                <option value="Afghanistan">Afghanistan</option>
-                <option value="Aland Islands">Aland Islands</option>
-                <option value="Albania">Albania</option>
-                <option value="Algeria">Algeria</option>
-            </select>
-        </div>
-        <div class="d-inline p-2">
-            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-        </div>
-    </div>
-</div>
+            <select data-placeholder="Choose a Country..." class="select" tabindex="1" id="country" name="country">
+                <option value="" class="select" name="">请选择市</option>
 
+            </select>
+        </div>
+        <div class="d-inline p-2">
+            <input class="form-control mr-sm-2" id="hotel" type="search" placeholder='可填'  aria-label="Search" name="area">
+        </div>
+       <button type="submit" class="btn btn-secondary btn-sm" style="height: 30px;">搜索</button>
+        </form>
+    </div>
+
+<script type="text/javascript">
+    var a={{ js_city|safe }};
+    document.getElementById("city").onchange=function (){
+        final_city=document.getElementById('city').value;
+        final_country=document.getElementById('country');
+        for (var i=0;i<a[final_city].length;i++){
+            var new_option=new Option(a[final_city][i]);
+            final_country.options.add(new_option);
+        }
+    }
+
+</script>
+</div>

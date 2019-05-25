@@ -1,45 +1,47 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-          integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-            integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-            crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
-            integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
-            crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
-            integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
-            crossorigin="anonymous"></script>
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>sign in</title>
-    <style type="text/css">
-        label {
-            float: left;
-        }
+{% include 'head.html' %}
+<nav class="navbar navbar-light bg-light">
+  <a class="navbar-brand" href="#">
+    <img src="logo.jpg" width="200px" height="100px" class="d-inline-block align-top " alt="" style="float: left">
 
-        input {
-            float: right;
-            width: 300px;
-        }
-    </style>
-</head>
-<body style="text-align: center">
-    <form action="/sign_in_user" method="post"  style="margin: auto;width: 400px;text-align: center">
-   {% csrf_token %}
-  <div class="form-group">
-    <label for="username">用户名</label>
-    <input type="text" class="form-control" id="username" placeholder="请输入用户名" name="username"><br/><br/>
-  </div>
-  <div class="form-group">
-    <label for="password">密码</label>
-    <input type="password" class="form-control" id="password" placeholder="密码" name="password"><br/><br/>
-  </div>
+  </a>
+</nav>
 
-  <button type="submit" class="btn btn-primary">Submit</button>
+
+
+
+		<div class="jumbotron" style="background: url(https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1558843122&di=3246202a2825ff1f29268b83864bbde1&imgtype=jpg&er=1&src=http%3A%2F%2Fdown1.sucaitianxia.net%2Fpsd02%2Fpsd172%2Fpsds33345.jpg) no-repeat center ;   background-size: cover;height: 400px; width: 100% ">
+
+			<div class="container"  style="height: 200px;width: 400px">
+    <form action="/sign_in_user" method="post" >
+       {% csrf_token %}
+		<div >
+<div class="form-group row">
+    <label for="username" class="col-sm-3 col-form-label" >用户名</label>
+    <div class="col-sm-12">
+      <input type="text" class="form-control" id="username" placeholder="请输入用户名" name="username"><br/><br/>
+    </div>
+  </div>
+  <div class="form-group row">
+    <label for="password" class="col-sm-3 col-form-label">密码</label>
+    <div class="col-sm-12">
+      <input type="password" class="form-control" id="password" placeholder="密码" name="password"><br/><br/>
+    </div>
+  </div>
+			  <div class="form-group row">
+    <div class="col-sm-10">
+      <button type="submit" class="btn btn-primary">Sign in</button>
+    </div>
+  </div>
+  </div>
 </form>
+
+	  </div>
+
+
+
+
+
+
 <script type="text/javascript">
     username={{ check_username }};
     password={{ check_password }};
@@ -52,5 +54,7 @@
         }
     }
 </script>
-</body>
-</html>
+		</div>
+
+
+{% include 'foot.html' %}

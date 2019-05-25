@@ -1,17 +1,19 @@
 from django.shortcuts import render, HttpResponse, redirect, HttpResponseRedirect
 from .models import Article, ArticleImg, Banner, Flow, Hotel, HotelImg, HotelPrice, News, NewsImg, Type
-
 import requests
-
+import re
 from django.shortcuts import render
 from math import radians, cos, sin, asin, sqrt, pi, fabs
-from django.http import HttpResponse
+from django.http import HttpResponse, JsonResponse
 from django.views.decorators import csrf
 from urllib import parse  # 经纬度转化
 import requests
 import json
 import hashlib
 # 流量分析图
+import matplotlib
+
+matplotlib.use('TkAgg')
 import sys
 import matplotlib
 import matplotlib.pyplot  # 使用mateplotlib生成折线图
@@ -21,6 +23,7 @@ from django.contrib.auth.models import User  # 创建普通用户
 from django.contrib.auth import authenticate, login  # 用户登录
 
 mpl.rcParams['font.sans-serif'] = ['Microsoft YaHei']
+city = {}  # 存放city信息
 
 
 # Create your views here.
@@ -57,10 +60,15 @@ def selectAll(request):
 # 首页路由请求
 def BootStrap(request):
     AllArticle = Article.objects.all()
-    context = {
+    pro()
+    finally_city = city
+    # js_city=json.load(open('json/山东省.json'))
+    js_city = json.dumps(finally_city, ensure_ascii=False)
+    return render(request, 'bootStrap.html', {
         'AllArticle': AllArticle,
-    }
-    return render(request, 'bootStrap.html', context)
+        'city': finally_city,
+        'js_city': js_city,
+    })
 
 
 # 景区路由请求
@@ -282,31 +290,31 @@ def test(request):
 
 #  ------庆2- #
 #          省区信息查询    #
-def pro(request):
-    city = {}  # 存放city信息
-    country = {}  # 存放country信息
+def pro():
     #      山东省城市            #
     shandong = open('json/山东省.json', encoding='utf-8')
     sd = json.load(shandong)
     sd_city = '山东省'
-    # city.setdefault('city',[]).append(sd_city)
     for i in sd['cityList']:
         city.setdefault(sd_city, []).append(i['name'])  # 获取山东省的全部城市
-        country.setdefault(0, []).append(i['name'])  # 获取山东省的全部城市
     #       山西省城市          #
     shanxi = open('json/山西省.json', encoding='utf-8')
     sx = json.load(shanxi)
     sx_city = '山西省'
-    # city.setdefault('city', []).append(sx_city)
     for i in sx['cityList']:
         city.setdefault(sx_city, []).append(i['name'])  # 获取山西省的全部城市
-        country.setdefault(1, []).append(i['name'])  # 获取山西省的全部城市
-    print(city)
-    print(country)
-    return render(request, 'test.html', {
-        'city': city,
-        'country': country
-    })
+    #      安徽省城市            #
+    anhui = open('json/安徽省.json', encoding='utf-8')
+    ah = json.load(anhui)
+    ah_city = '安徽省'
+    for i in ah['cityList']:
+        city.setdefault(ah_city, []).append(i['name'])  # 获取安徽省的全部城市
+    #      广东省城市            #
+    guangdong = open('json/广东省.json', encoding='utf-8')
+    gd = json.load(guangdong)
+    gd_city = '广东省'
+    for i in gd['cityList']:
+        city.setdefault(gd_city, []).append(i['name'])  # 获取广东省的全部城市
 
 
 #     用户注册页面     #
@@ -391,3 +399,67 @@ def sign_in_user(request):
             'check_username': check_username,
             'check_password': check_password,
         })
+
+
+#      景点匹配      #
+def get_scenic(request):
+    about_article = {}
+    if request.POST:
+        scenic = request.POST['scenic']
+    all_Article = Article.objects.all()  # 获取全部的景点信息
+    for article in all_Article:  # 精准性匹配，判断是否存在相同的景点
+        if scenic == article.title:
+            url = article.url
+            return HttpResponseRedirect('http://127.0.0.1:8000/detail/' + url + '.html')
+    return render(request, 'about_scenic.html', {
+        'scenic': scenic,
+        'all_Article': all_Article,
+    })
+
+
+#       酒店匹配请求    #
+def get_hotel(request):
+    about_hotel = {}
+    if request.POST:
+        hotel = request.POST['hotel']
+    all_hotel = Hotel.objects.all()  # 获取全部酒店信息
+    for hotels in all_hotel:  # 精准性匹配，判断是否存在相同的景点
+        if hotel == hotels.name:
+            url = hotels.url
+            return HttpResponseRedirect('http://127.0.0.1:8000/detailhotel/' + url + '.html')
+    return render(request, 'about_hotel.html', {
+        'about_hotel': all_hotel,
+        'hotel': hotel,
+    })
+
+
+#         搜索地点匹配      #
+def search_position(request):
+    scenic = {}
+    if request.POST:
+        city = request.POST['city']
+        country = request.POST['country']
+        area = request.POST['area']
+    all_scenic = Article.objects.all()
+    print(city)
+    print(country)
+    for article in all_scenic:
+        if re.match(city, article.position):  # 城市匹配成功
+            if country == '':  # 市为空
+                # city.setdefault(sd_city, []).append(i['name'])
+                scenic.setdefault(article.title, []).append(article.title)
+            else:
+                if re.match(country, article.position_city):  # 与市匹配
+                    if area == '':
+                        scenic.setdefault(article.title, []).append(article.title)
+                    else:
+                        if re.match(area, article.position_area):  # 与地区匹配
+                            scenic.setdefault(article.title, []).append(article.title)
+    # for scenics in scenic:
+    #     print(scenics)
+    # return     HttpResponse("ok")
+
+    return render(request, 'search_position.html', {
+        'scenics': scenic,
+        'all_scenic': all_scenic,
+    })

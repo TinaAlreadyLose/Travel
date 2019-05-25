@@ -22,13 +22,14 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'd45nsu4_dw1f9l(b9et$-6!7*2zs2hr04k!td)x5^$o7qp&q^b'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ['*', '192.168.43.64']
 
 # Application definition
 
 INSTALLED_APPS = [
+    # 'simpleui',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -79,8 +80,8 @@ DATABASES = {
         'NAME': 'travel',
         'USER': 'demo',
         'PASSWORD': 'JHjh@2310699',
-        'HOST': '127.0.0.1',  # 你的数据库主机，留空默认为localhost
-        'PORT': '3306',  # 你的数据库端口
+        'HOST': 'localhost',
+        'PORT': '3306',
     }
 }
 
@@ -117,6 +118,8 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
+
+STATIC_ROOT = '/Users/greendan/PycharmProjects/myTravel/static/'
 
 STATIC_URL = '/static/'
 # 这个是设置静态文件夹目录的路径

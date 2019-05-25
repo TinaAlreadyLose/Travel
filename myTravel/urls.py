@@ -43,5 +43,8 @@ urlpatterns = [
     url(r'^register.php', views.register),
     url(r'^sign_in.php', views.sign_in),
     url(r'^sign_in_user', views.sign_in_user),
-
+    url(r'^search-scenic',views.get_scenic),#景点判断
+    url(r'^search-hotel',views.get_hotel),
+    url(r'^test',views.test),
+    url(r'^position',views.search_position),
 ]

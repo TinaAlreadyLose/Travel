@@ -1,0 +1,7 @@
+
+<form class="form-inline" style="background-color:rgba(0,0,0,0)" action="/search-hotel" method="post">
+    {% csrf_token %}
+    <label for="hotel">酒店名称</label>&nbsp;&nbsp;
+    <input class="form-control mr-sm-2" id="hotel" type="search" placeholder="酒店" aria-label="Search" name="hotel">
+    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">搜索</button>
+</form>
