@@ -119,7 +119,7 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
 
-STATIC_ROOT = '/Users/greendan/PycharmProjects/myTravel/static/'
+STATIC_ROOT = '/usr/local/nginx/static/'
 
 STATIC_URL = '/static/'
 # 这个是设置静态文件夹目录的路径
